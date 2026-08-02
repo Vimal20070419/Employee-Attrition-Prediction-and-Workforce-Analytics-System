@@ -27,7 +27,6 @@ jobs:
 
       - name: Install backend deps
         run: |
-          pip install flake8 black isort mypy
           pip install -r backend/requirements.txt
 
       - name: Black (format check)
