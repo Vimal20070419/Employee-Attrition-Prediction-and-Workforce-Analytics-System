@@ -1,0 +1,347 @@
+/* AttritionIQ — Light Neumorphism (Soft UI) CSS Layout & Design System */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================
+   CSS Custom Properties & Ultra-Soft Neumorphic Tokens
+   ======================== */
+:root {
+  --brand-primary: #059669;
+  --brand-secondary: #0284c7;
+  --brand-accent: #10b981;
+  --brand-danger: #f43f5e;
+  --brand-success: #10b981;
+  --brand-warning: #f59e0b;
+
+  --bg-primary: #e6ebf2;
+  --bg-surface: #e6ebf2;
+  --bg-card: #e6ebf2;
+
+  --neu-dark-shadow: rgba(180, 192, 208, 0.45);
+  --neu-light-shadow: #ffffff;
+  --neu-inset-dark: rgba(170, 182, 200, 0.5);
+  --neu-inset-light: #ffffff;
+
+  --border-default: rgba(255, 255, 255, 0.9);
+  --border-highlight: rgba(16, 185, 129, 0.3);
+  --border-focus: rgba(16, 185, 129, 0.5);
+
+  --text-primary: #334155;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+
+  --neu-shadow-flat: 4px 4px 10px var(--neu-dark-shadow), -4px -4px 10px var(--neu-light-shadow);
+  --neu-shadow-hover: 6px 6px 14px rgba(170, 182, 200, 0.55), -6px -6px 14px var(--neu-light-shadow);
+  --neu-shadow-pressed: inset 3px 3px 6px var(--neu-inset-dark), inset -3px -3px 6px var(--neu-inset-light);
+}
+
+/* ========================
+   Base Reset & Layout Root
+   ======================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-primary) var(--bg-primary);
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #1e293b;
+}
+
+/* ========================
+   Legacy Dark-Mode Text Class Overrides for Light Neumorphism
+   ======================== */
+.text-white {
+  color: #1e293b !important;
+}
+.text-gray-100, .text-gray-200, .text-gray-300 {
+  color: #334155 !important;
+}
+.text-gray-400 {
+  color: #475569 !important;
+}
+.text-gray-500 {
+  color: #64748b !important;
+}
+.text-brand-400 {
+  color: #059669 !important;
+}
+.text-brand-300 {
+  color: #10b981 !important;
+}
+
+/* ========================
+   Custom Soft Scrollbar
+   ======================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+  box-shadow: inset 2px 2px 4px var(--neu-inset-dark), inset -2px -2px 4px var(--neu-inset-light);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  box-shadow: 2px 2px 4px var(--neu-dark-shadow), -2px -2px 4px var(--neu-light-shadow);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary);
+}
+
+/* ========================
+   Advanced Light Neumorphic Component Classes (Ultra-Soft Shadows, No Black Text)
+   ======================== */
+@layer components {
+  /* Bento Grid Container System */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .bento-span-12 { grid-column: span 12 / span 12; }
+  .bento-span-8  { grid-column: span 12 / span 12; }
+  .bento-span-6  { grid-column: span 12 / span 12; }
+  .bento-span-4  { grid-column: span 12 / span 12; }
+  .bento-span-3  { grid-column: span 12 / span 12; }
+
+  @media (min-width: 768px) {
+    .bento-span-6  { grid-column: span 6 / span 6; }
+    .bento-span-4  { grid-column: span 4 / span 4; }
+    .bento-span-3  { grid-column: span 3 / span 3; }
+  }
+
+  @media (min-width: 1024px) {
+    .bento-span-8  { grid-column: span 8 / span 8; }
+    .bento-span-4  { grid-column: span 4 / span 4; }
+    .bento-span-3  { grid-column: span 3 / span 3; }
+  }
+
+  /* Neumorphic Light Extruded Card Component */
+  .glass-card, .neu-card {
+    @apply relative rounded-3xl transition-all duration-300;
+    background: #e6ebf2;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: var(--neu-shadow-flat);
+  }
+
+  .glass-card-hover, .neu-card-hover {
+    @apply glass-card;
+  }
+  .glass-card-hover:hover, .neu-card-hover:hover {
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: var(--neu-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  /* Inset Neumorphic Surface */
+  .neu-pressed {
+    background: #dee4ed;
+    box-shadow: var(--neu-shadow-pressed);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  /* Glow-Free Card Effect */
+  .glow-card {
+    @apply relative rounded-3xl overflow-hidden transition-all duration-300;
+    background: #e6ebf2;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: var(--neu-shadow-flat);
+  }
+
+  /* Gradient Text Variants */
+  .gradient-text {
+    @apply bg-clip-text text-transparent font-extrabold;
+    background-image: linear-gradient(135deg, #059669 0%, #10b981 50%, #0284c7 100%);
+  }
+
+  .gradient-text-warm {
+    @apply bg-clip-text text-transparent font-extrabold;
+    background-image: linear-gradient(135deg, #d97706 0%, #f43f5e 100%);
+  }
+
+  .gradient-text-emerald {
+    @apply bg-clip-text text-transparent font-extrabold;
+    background-image: linear-gradient(135deg, #059669 0%, #10b981 50%, #00e676 100%);
+  }
+
+  /* Soft Neumorphic Convex Buttons (Ultra-Soft Projection) */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm
+           transition-all duration-300 cursor-pointer select-none relative overflow-hidden;
+    color: #ffffff !important;
+    background: linear-gradient(145deg, #10b981, #059669);
+    box-shadow: 4px 4px 10px var(--neu-dark-shadow), -4px -4px 10px var(--neu-light-shadow), inset 1px 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(145deg, #34d399, #10b981);
+    color: #ffffff !important;
+    box-shadow: 6px 6px 14px var(--neu-dark-shadow), -6px -6px 14px var(--neu-light-shadow);
+    transform: translateY(-1px);
+  }
+  .btn-primary:active {
+    box-shadow: inset 3px 3px 6px #047857, inset -3px -3px 6px #34d399;
+    transform: translateY(1px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm
+           transition-all duration-300 cursor-pointer text-slate-700;
+    background: #e6ebf2;
+    box-shadow: 4px 4px 10px var(--neu-dark-shadow), -4px -4px 10px var(--neu-light-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+  }
+  .btn-secondary:hover {
+    background: #edf2f8;
+    color: #059669 !important;
+    box-shadow: 6px 6px 14px var(--neu-dark-shadow), -6px -6px 14px var(--neu-light-shadow);
+    transform: translateY(-1px);
+  }
+  .btn-secondary:active {
+    box-shadow: var(--neu-shadow-pressed);
+    transform: translateY(1px);
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-sm
+           transition-all duration-300 cursor-pointer;
+    color: #ffffff !important;
+    background: linear-gradient(145deg, #f43f5e, #e11d48);
+    box-shadow: 4px 4px 10px var(--neu-dark-shadow), -4px -4px 10px var(--neu-light-shadow);
+  }
+  .btn-danger:hover {
+    box-shadow: 6px 6px 14px var(--neu-dark-shadow), -6px -6px 14px var(--neu-light-shadow);
+    transform: translateY(-1px);
+  }
+
+  /* Form Input Controls (Light Pressed Inset, Ultra-Soft) */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-200 outline-none;
+    background: #dee4ed;
+    box-shadow: inset 3px 3px 6px var(--neu-inset-dark), inset -3px -3px 6px var(--neu-inset-light);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: var(--text-primary);
+  }
+  .input-field:focus {
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: inset 3px 3px 6px var(--neu-inset-dark), inset -3px -3px 6px var(--neu-inset-light);
+  }
+  .input-field::placeholder {
+    color: var(--text-muted);
+  }
+
+  /* KPI Stat Card */
+  .kpi-card {
+    @apply glass-card p-6 flex flex-col gap-2 relative overflow-hidden transition-all duration-300;
+  }
+  .kpi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--neu-shadow-hover);
+  }
+  .kpi-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-1.5 rounded-t-3xl;
+    background: linear-gradient(90deg, var(--kpi-color, var(--brand-primary)), var(--brand-secondary));
+  }
+
+  /* Status Badges */
+  .badge-critical {
+    @apply px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide inline-flex items-center gap-1.5;
+    background: #e6ebf2;
+    color: #f43f5e;
+    box-shadow: 2px 2px 5px var(--neu-dark-shadow), -2px -2px 5px var(--neu-light-shadow);
+    border: 1px solid rgba(244, 63, 94, 0.3);
+  }
+  .badge-high {
+    @apply px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide inline-flex items-center gap-1.5;
+    background: #e6ebf2;
+    color: #d97706;
+    box-shadow: 2px 2px 5px var(--neu-dark-shadow), -2px -2px 5px var(--neu-light-shadow);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+  .badge-medium {
+    @apply px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide inline-flex items-center gap-1.5;
+    background: #e6ebf2;
+    color: #0284c7;
+    box-shadow: 2px 2px 5px var(--neu-dark-shadow), -2px -2px 5px var(--neu-light-shadow);
+    border: 1px solid rgba(2, 132, 199, 0.3);
+  }
+  .badge-low {
+    @apply px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide inline-flex items-center gap-1.5;
+    background: #e6ebf2;
+    color: #059669;
+    box-shadow: 2px 2px 5px var(--neu-dark-shadow), -2px -2px 5px var(--neu-light-shadow);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  /* Navigation Sidebar */
+  .sidebar {
+    @apply fixed inset-y-0 left-0 z-50 flex flex-col transition-all duration-300;
+    background: #e6ebf2;
+    border-right: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 4px 0 12px var(--neu-dark-shadow);
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-sm font-semibold
+           transition-all duration-200 cursor-pointer text-slate-600 relative overflow-hidden;
+  }
+  .sidebar-link:hover {
+    background: #e6ebf2;
+    color: #059669;
+    box-shadow: 3px 3px 7px var(--neu-dark-shadow), -3px -3px 7px var(--neu-light-shadow);
+  }
+  .sidebar-link.active {
+    background: #dee4ed;
+    color: #047857;
+    box-shadow: inset 3px 3px 6px var(--neu-inset-dark), inset -3px -3px 6px var(--neu-inset-light);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  /* Skeleton Loading */
+  .skeleton {
+    @apply rounded-2xl animate-pulse;
+    background: linear-gradient(90deg, #e6ebf2 25%, #dae2ed 50%, #e6ebf2 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    box-shadow: inset 2px 2px 4px var(--neu-inset-dark), inset -2px -2px 4px var(--neu-inset-light);
+  }
+
+  /* Progress Bar */
+  .progress-bar {
+    @apply h-3.5 rounded-full overflow-hidden;
+    background: #dee4ed;
+    box-shadow: inset 2px 2px 5px var(--neu-inset-dark), inset -2px -2px 5px var(--neu-inset-light);
+  }
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-700 ease-out;
+    background: linear-gradient(90deg, #10b981, #00e676);
+  }
+}
+
+/* ========================
+   Keyframe Animations
+   ======================== */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

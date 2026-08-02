@@ -1,0 +1,154 @@
+# ========================
+# Python
+# ========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+pytestmark
+
+# ========================
+# Virtual Environments
+# ========================
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ========================
+# Environment Variables
+# ========================
+.env
+.env.local
+.env.production
+.env.staging
+!.env.example
+
+# ========================
+# Node / Frontend
+# ========================
+node_modules/
+.npm
+.eslintcache
+.parcel-cache
+.next/
+out/
+.nuxt/
+dist/
+.cache/
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# ========================
+# IDE / Editor
+# ========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ========================
+# Docker
+# ========================
+.docker/
+
+# ========================
+# ML Artifacts
+# ========================
+ml_service/artifacts/models/*.joblib
+ml_service/artifacts/models/*.pkl
+ml_service/artifacts/shap/*.json
+ml_service/artifacts/plots/*.png
+ml_service/artifacts/plots/*.html
+*.joblib
+*.pkl
+
+# ========================
+# Logs
+# ========================
+*.log
+logs/
+*.log.*
+
+# ========================
+# Database
+# ========================
+*.sqlite
+*.db
+*.db-shm
+*.db-wal
+
+# ========================
+# Test Artifacts
+# ========================
+.pytest_cache/
+htmlcov/
+.coverage
+playwright-report/
+test-results/
+
+# ========================
+# Uploads / Temp
+# ========================
+uploads/
+temp/
+tmp/
+*.tmp
+
+# ========================
+# OS
+# ========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

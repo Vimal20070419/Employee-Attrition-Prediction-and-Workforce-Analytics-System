@@ -1,0 +1,36 @@
+# Netlify Configuration File for AttritionIQ Frontend
+# Reference: https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # Directory where the frontend project lives
+  base = "frontend"
+  # Build command to check types and compile with Vite
+  command = "npm run build"
+  # Directory containing static build output (relative to base)
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Single Page Application (SPA) Redirect Rule
+# Ensures client-side routing (React Router) works seamlessly on page refresh
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache control for static assets built by Vite
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
